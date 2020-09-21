@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм» [![Build status][travis-image]][travis-url]
 
 * Студент: [Данил Фотин](https://up.htmlacademy.ru/javascript/21/user/1010499).
-* Наставник: `Неизвестно`.
+* Наставник: [Максим Деев].
 
 ---
 
