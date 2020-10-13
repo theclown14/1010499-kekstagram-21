@@ -1,40 +1,45 @@
-'use strict'
+'use strict';
 
 let arr = [];
-let arrayGenerator = function() {
-    
-    for (let i = 0; i < 25; i++){
-        arr[i] = {
-            url: 'photos/${i}.jpg',//work?
-            description: '',
-            likes: 3,//random
-            comments: [
-                {
-                    avatar: "img/avatar-${i}.svg",
-                    message: "В целом всё неплохо. Но не всё.",
-                    name: "Артем"//do it randomic
-                }
-            ]
-        };
-    
+
+const random = function (min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+};
+
+const arrayGenerator = function () {
+
+  for (let i = 0; i < 25; i++) {
+    arr[i] = {
+      url: `photos/${i + 1}.jpg`,
+      description: '',
+      likes: random(15, 200),
+      comments: [
+        {
+          avatar: `img/avatar-${random(1, 6)}.svg`,
+          message: "Всё отлично!",
+          name: "Артем"
+        }
+      ]
     };
-    return arr;
+  }
+  return arr;
 };
 
 arr = arrayGenerator();
 
-let container =  document.querySelector('.pictures');
+const container = document.querySelector('.pictures');
+const pictureTemplate = document.querySelector(`#picture`).content.querySelector(`.picture`);
 
-for (let i = 0; i < arr.length; i++){
-  let picture = document.querySelector('#picture');
-    picture = picture.cloneNode();
-let pictureImage = picture.querySelector('.picture__img');
-let pictureLikes = picture.querySelector('.picture__likes');
-let pictureComments = picture.querySelector('.picture__comments');
+for (let i = 0; i < arr.length; i++) {
+  let picture = pictureTemplate.cloneNode(true);
 
-pictureImage.src = arr[i].url;
-pictureLikes.textContent = arr[i].likes;
-pictureComments.textContent = arr[i].comments;
+  let pictureImage = picture.querySelector('.picture__img');
+  let pictureLikes = picture.querySelector('.picture__likes');
+  let pictureComments = picture.querySelector('.picture__comments');
 
-    container.appendChild(picture);
+  pictureImage.src = arr[i].url;
+  pictureLikes.textContent = arr[i].likes;
+  pictureComments.textContent = arr[i].comments[0].message;
+
+  container.appendChild(picture);
 }
