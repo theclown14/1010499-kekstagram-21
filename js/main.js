@@ -1,5 +1,5 @@
 'use strict';
-
+// Показ фотографий других пользователей
 let arr = [];
 
 const random = function (min, max) {
