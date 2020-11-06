@@ -15,11 +15,35 @@
 
   // Интенсивность эффекта (не сделал)
 
-  // const effectLvlPin = document.querySelector('.effect-level__pin');
-  // const effectLvlValue = document.querySelector('.effect-level__value');
-  // const effectLvlLine = document.querySelector('.effect-level__line');
-  // const effectLvlDepth = document.querySelector('.effect-level__depth');
-  // effectLvlPin.addEventListener('mouseup', function(){
-  // effectLvlValue = effectLvlLine - effectLvlDepth;
-  // });
+   const effectLvlPin = document.querySelector('.effect-level__pin');
+   const effectLvlValue = document.querySelector('.effect-level__value');
+   const effectLvlLine = document.querySelector('.effect-level__line');
+   const effectLvlDepth = document.querySelector('.effect-level__depth');
+    const LINE_WIDTH = 453;
+   let isMove = false; 
+   
+   
+    document.addEventListener('mousemove', function(evt){
+     if(isMove){
+
+         const newValue = (evt.offsetX * 100) / LINE_WIDTH;
+         effectLvlDepth.style.width = newValue + '%';
+         effectLvlPin.style.left = newValue + '%';
+         effectLvlValue.value = newValue;
+         console.log(newValue);
+         console.log(LINE_WIDTH);
+     }
+       
+    });
+    
+    effectLvlPin.addEventListener('mousedown', function(){
+     isMove = true;
+       
+    });
+    
+   effectLvlPin.addEventListener('mouseup', function(){
+       isMove = false;
+   });
+    
+    
 })();
