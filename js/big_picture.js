@@ -17,23 +17,47 @@
   const socialCommentCount = document.querySelector('.social__comment-count');
   const commentsLoader = document.querySelector('.comments-loader');
   
-  
   bigPicture.classList.remove('hidden');
   
-
-    
   bigPhoto.src = arr[0].url;
   likesCount.textContent = arr[0].likes;
   commentsCount.textContent = arr[0].comments.length;
   
-  //description, и все что в комменте принимает за null
   socialPicture.src = arr[0].comments[0].avatar;
   socialPicture.alt = arr[0].comments[0].name;
   socialText.textContent = arr[0].comments[0].message;
-  //
   socialCaption.textContent = arr[0].description;
   
   socialCommentCount.classList.add('hidden');
   commentsLoader.classList.add('hidden');
   document.body.classList.add('modal-open');
+    
+  //закрытие большой фотки
+  const bigPictureCancel = document.querySelector('.big-picture__cancel');
+  const bigPicturePreview = document.querySelector('.big-picture__preview');
+    
+  bigPictureCancel.addEventListener('click', function () {
+    bigPicturePreview.classList.add('hidden');
+    document.body.classList.remove('modal-open');
+    bigPicture.classList.remove('overlay');
+  });
+    
+  bigPictureCancel.addEventListener('keydown', function (evt) {
+    if (evt.keyCode === 27) {
+      bigPicturePreview.classList.add('hidden');
+      document.body.classList.remove('modal-open');
+      bigPicture.classList.remove('overlay');
+    }
+  });
+   
+  //открытие фотки в большом размере
+  const picture = document.querySelector('.picture');
+  const pictureImg = picture.getElementsByTagName('img')[0];
+    
+    
+    pictureImage.addEventListener('click', function (evt){
+      bigPicturePreview.classList.remove('hidden');
+      document.body.classList.add('modal-open');
+      bigPicture.classList.add('overlay'); 
+    })
 })();
