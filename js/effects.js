@@ -3,15 +3,15 @@
 (function () {
   const imgUploadPreview = document.querySelector('.img-upload__preview');
   const effectsForm = document.querySelector('.img-upload__effects');
-  let currentFilter;
-  const filterChangeHandler = function (evt) {
+  let currentEffect;
+  const effectsChangeHandler = function (evt) {
     if (evt.target.matches('input[type="radio"]')) {
       imgUploadPreview.classList.add(`effects__preview--${evt.target.value}`);
     }
-    imgUploadPreview.classList.remove(currentFilter);
-    currentFilter = `effects__preview--${evt.target.value}`;
+    imgUploadPreview.classList.remove(currentEffect);
+    currentEffect = `effects__preview--${evt.target.value}`;
   };
-  effectsForm.addEventListener('change', filterChangeHandler);
+  effectsForm.addEventListener('change', effectsChangeHandler);
 
   // Интенсивность эффекта (не сделал)
 

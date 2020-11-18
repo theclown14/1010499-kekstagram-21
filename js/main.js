@@ -37,24 +37,28 @@ const random = function (min, max) {
 
 arr = arrayGenerator();
 
-//для подключения load_data
-window.load(function(arr){
-const container = document.querySelector('.pictures');
-const pictureTemplate = document.querySelector(`#picture`).content.querySelector(`.picture`);
-
-for (let i = 0; i < arr.length; i++) {
-  let picture = pictureTemplate.cloneNode(true);
-
-  let pictureImage = picture.querySelector('.picture__img');
-  let pictureLikes = picture.querySelector('.picture__likes');
-  let pictureComments = picture.querySelector('.picture__comments');
-
-  pictureImage.src = arr[i].url;
-  pictureLikes.textContent = arr[i].likes;
-  pictureComments.textContent = arr[i].comments[0].message;
-
-  container.appendChild(picture);
+function setPictures(arr){
+  const container = document.querySelector('.pictures');
+  const pictureTemplate = document.querySelector(`#picture`).content.querySelector(`.picture`);
+  
+  for (let i = 0; i < arr.length; i++) {
+    let picture = pictureTemplate.cloneNode(true);
+  
+    let pictureImage = picture.querySelector('.picture__img');
+    let pictureLikes = picture.querySelector('.picture__likes');
+    let pictureComments = picture.querySelector('.picture__comments');
+  
+    pictureImage.src = arr[i].url;
+    pictureLikes.textContent = arr[i].likes;
+    pictureComments.textContent = arr[i].comments[0].message;
+  
+    container.appendChild(picture);
+  }
 }
-}, function() {});
 
-
+ 
+//для подключения load_data
+window.load(setPictures, function() {
+    
+});  
+    

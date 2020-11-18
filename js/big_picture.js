@@ -51,13 +51,17 @@
   });
    
   //открытие фотки в большом размере
-  const picture = document.querySelector('.picture');
-  const pictureImg = picture.getElementsByTagName('img')[0];
+//    const pictureTemplate = document.querySelector(`#picture`).content.querySelector(`.picture`);
+//    const pictureImg = pictureTemplate.querySelector('.picture__img');
+      const picturesContainer = document.querySelector('.pictures'); 
     
-    
-    pictureImage.addEventListener('click', function (evt){
+    picturesContainer.addEventListener('click', function (evt){
+      if(evt.target.tagName==='IMG'){
+          const pictureImg = evt.target;
+        console.log(evt.target);
       bigPicturePreview.classList.remove('hidden');
       document.body.classList.add('modal-open');
       bigPicture.classList.add('overlay'); 
+      }
     })
 })();
